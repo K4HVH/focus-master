@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="libs\base64\base64.cpp">
+      <Filter>libs\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="features\http\http.cpp">
+      <Filter>features\http</Filter>
+    </ClCompile>
+    <ClCompile Include="features\crypto\crypto.cpp">
+      <Filter>features\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="features\client\client.cpp">
+      <Filter>features\client</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="libs">
+      <UniqueIdentifier>{7f1e2ae9-9f5c-40cf-977e-75f12c71ba4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\base64">
+      <UniqueIdentifier>{415a2805-b92d-4670-a216-c46654806475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="features">
+      <UniqueIdentifier>{7e6a015e-564d-4a6c-a1d9-a1fef5ce36cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="features\http">
+      <UniqueIdentifier>{f41f0421-b013-477f-a800-2f93b2d5b6d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="features\crypto">
+      <UniqueIdentifier>{0170f629-7289-4981-be81-f26c1fa120db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="features\client">
+      <UniqueIdentifier>{490542dd-fb5a-4138-bf37-a08c53ff3120}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libs\base64\base64.h">
+      <Filter>libs\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="features\http\http.hpp">
+      <Filter>features\http</Filter>
+    </ClInclude>
+    <ClInclude Include="features\crypto\crypto.hpp">
+      <Filter>features\crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="features\client\client.hpp">
+      <Filter>features\client</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
