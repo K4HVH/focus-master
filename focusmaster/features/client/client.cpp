@@ -36,15 +36,17 @@ void client::debugtest() {
     return;
 }
 
-std::string client::generateKey(int length) {
+std::string client::generateKey(int length, std::string alias) {
     std::string iv = cr.generateIV();
     std::string encodedMK = cr.encryptEncode(masterkey, key, iv);
     std::string encodedLength = cr.encryptEncode(std::to_string(length), key, iv);
+    std::string encodedAlias = cr.encryptEncode(alias, key, iv);
 
     json msg;
     msg["iv"] = iv;
     msg["mk"] = encodedMK;
     msg["length"] = encodedLength;
+	msg["alias"] = encodedAlias;
 
     std::string jsonString = msg.dump();
 

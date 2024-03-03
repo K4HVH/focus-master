@@ -8,7 +8,7 @@ class client {
 	
 public:
 	void debugtest();
-	std::string generateKey(int length);
+	std::string generateKey(int length, std::string alias);
 	std::string banID(std::string identifier, std::string id);
 	std::string rsHwid(std::string id);
 

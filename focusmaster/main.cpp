@@ -17,17 +17,23 @@ int main() {
 
         if (command == "generate") {
             int length;
+            std::string alias;
 
             std::cout << "Enter key length: ";
             std::cin >> length;
+            std::cout << "" << std::endl;
 
-            std::cout << cl.generateKey(length) << std::endl;
+            std::cout << "Enter alias: ";
+            std::cin >> alias;
+            std::cout << "" << std::endl;
+
+            std::cout << cl.generateKey(length, alias) << std::endl;
         }
         else if (command == "ban") {
             std::string identifier;
             std::string id;
 
-            std::cout << "Identifiers: licenseid userid hwid ip" << std::endl;
+            std::cout << "Identifiers: licenseid userid hwid ip alias" << std::endl;
 
             std::cout << "Enter Identifier: ";
 			std::cin >> identifier;
@@ -37,7 +43,7 @@ int main() {
             std::cin >> id;
             std::cout << "" << std::endl;
 
-            if (identifier == "licenseid" || identifier == "userid" || identifier == "hwid" || identifier == "ip") {
+            if (identifier == "licenseid" || identifier == "userid" || identifier == "hwid" || identifier == "ip" || identifier == "alias") {
                 std::cout << cl.banID(identifier, id) << std::endl;
             }
             else {
