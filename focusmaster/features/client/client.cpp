@@ -46,14 +46,60 @@ std::string client::generateKey(int length) {
     msg["mk"] = encodedMK;
     msg["length"] = encodedLength;
 
-    std::string jsonString = msg.dump(); // Serialize the JSON object to a string
+    std::string jsonString = msg.dump();
 
     auto response = json::parse(ht.postReq(jsonString, L"/generate", true));
 
     std::string data = response["data"];
     std::string respIV = response["iv"];
 
-    std::string license = cr.decrypt(base64_decode(data), key, respIV);
+    std::string license = cr.decryptDecode(data, key, respIV);
 
     return license;
+}
+
+std::string client::banID(std::string identifier, std::string id) {
+    std::string iv = cr.generateIV();
+    std::string encodedMK = cr.encryptEncode(masterkey, key, iv);
+	std::string encodedIdentifier = cr.encryptEncode(identifier, key, iv);
+    std::string encodedID = cr.encryptEncode(id, key, iv);
+
+	json msg;
+	msg["iv"] = iv;
+	msg["mk"] = encodedMK;
+	msg["identifier"] = encodedIdentifier;
+	msg["id"] = encodedID;
+
+	std::string jsonString = msg.dump();
+
+    auto response = json::parse(ht.postReq(jsonString, L"/ban", true));
+
+	std::string data = response["data"];
+	std::string respIV = response["iv"];
+
+	std::string bans = cr.decryptDecode(data, key, respIV);
+
+    return bans;
+}
+
+std::string client::rsHwid(std::string id) {
+    std::string iv = cr.generateIV();
+    std::string encodedMK = cr.encryptEncode(masterkey, key, iv);
+    std::string encodedID = cr.encryptEncode(id, key, iv);
+
+	json msg;
+	msg["iv"] = iv;
+	msg["mk"] = encodedMK;
+	msg["id"] = encodedID;
+
+	std::string jsonString = msg.dump();
+
+	auto response = json::parse(ht.postReq(jsonString, L"/rshwid", true));
+
+	std::string data = response["data"];
+	std::string respIV = response["iv"];
+
+	std::string hwid = cr.decryptDecode(data, key, respIV);
+
+	return hwid;
 }

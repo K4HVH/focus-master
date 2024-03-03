@@ -9,6 +9,8 @@ class client {
 public:
 	void debugtest();
 	std::string generateKey(int length);
+	std::string banID(std::string identifier, std::string id);
+	std::string rsHwid(std::string id);
 
 private:
 	std::string key = "ASNFZ4mrze8BI0VniavN7wEjRWeJq83vASNFZ4mrze8=";
