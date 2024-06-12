@@ -16,7 +16,7 @@ int main() {
         std::cout << "" << std::endl;
 
         if (command == "generate") {
-            int length;
+            float length;
             std::string alias;
 
             std::cout << "Enter key length: ";

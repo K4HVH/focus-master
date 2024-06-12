@@ -20,7 +20,7 @@ void client::debugtest() {
 
     std::string jsonString = msg.dump(); // Serialize the JSON object to a string
 
-    auto response = json::parse(ht.postReq(jsonString, L"/decrypt", false));
+    auto response = json::parse(ht.postReq(jsonString, L"/decrypt", true));
 
     // Extract the data and iv values
     std::string data = response["data"];
@@ -36,7 +36,7 @@ void client::debugtest() {
     return;
 }
 
-std::string client::generateKey(int length, std::string alias) {
+std::string client::generateKey(float length, std::string alias) {
     std::string iv = cr.generateIV();
     std::string encodedMK = cr.encryptEncode(masterkey, key, iv);
     std::string encodedLength = cr.encryptEncode(std::to_string(length), key, iv);
@@ -50,7 +50,7 @@ std::string client::generateKey(int length, std::string alias) {
 
     std::string jsonString = msg.dump();
 
-    auto response = json::parse(ht.postReq(jsonString, L"/generate", false));
+    auto response = json::parse(ht.postReq(jsonString, L"/generate", true));
 
     std::string data = response["data"];
     std::string respIV = response["iv"];
@@ -74,7 +74,7 @@ std::string client::banID(std::string identifier, std::string id) {
 
 	std::string jsonString = msg.dump();
 
-    auto response = json::parse(ht.postReq(jsonString, L"/ban", false));
+    auto response = json::parse(ht.postReq(jsonString, L"/ban", true));
 
 	std::string data = response["data"];
 	std::string respIV = response["iv"];
@@ -96,7 +96,7 @@ std::string client::rsHwid(std::string id) {
 
 	std::string jsonString = msg.dump();
 
-	auto response = json::parse(ht.postReq(jsonString, L"/rshwid", false));
+	auto response = json::parse(ht.postReq(jsonString, L"/rshwid", true));
 
 	std::string data = response["data"];
 	std::string respIV = response["iv"];
